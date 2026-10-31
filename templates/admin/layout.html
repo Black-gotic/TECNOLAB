@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Painel Administrativo — TECNOLAB{% endblock %}
+
+{% block content %}
+<section class="section admin-section" style="padding-top: 7rem; min-height: 80vh;">
+    <div class="admin-topbar">
+        <div class="admin-title-area">
+            <span class="hero-tag">Área Restrita</span>
+            <h1 class="admin-main-title">Painel Administrativo</h1>
+            <p class="admin-subtitle">Bem-vindo, <strong>{{ session.get('username', 'Admin') }}</strong>! Gerencie os conteúdos e projetos do TECNOLAB.</p>
+        </div>
+        <div class="admin-actions-bar">
+            <a href="{{ url_for('admin_logout') }}" class="btn btn-secondary btn-sm" onclick="return confirm('Deseja realmente sair do painel?');">Sair do Painel &times;</a>
+        </div>
+    </div>
+
+    <!-- Abas / Navegação do Admin -->
+    <div class="admin-nav-tabs">
+        <a href="{{ url_for('admin_tutorials') }}" class="admin-tab-btn {% if active_tab == 'tutorials' %}active{% endif %}">
+            Tutoriais & Artigos
+        </a>
+        <a href="{{ url_for('admin_projects') }}" class="admin-tab-btn {% if active_tab == 'projects' %}active{% endif %}">
+            Portfólio de Projetos
+        </a>
+    </div>
+
+    <div class="admin-content-box">
+        {% block admin_content %}{% endblock %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Acesso Administrativo — TECNOLAB{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top: 8rem; min-height: 75vh; display: flex; align-items: center; justify-content: center;">
+    <div class="admin-login-card">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <span class="hero-tag">Acesso Restrito</span>
+            <h2 class="section-title" style="margin-bottom: 0.5rem; font-size: 1.8rem;">Login Administrativo</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Informe suas credenciais para gerenciar conteúdos e projetos.</p>
+        </div>
+
+        <form method="POST" action="{{ url_for('admin_login') }}" class="contact-form" style="max-width: 420px; margin: 0 auto;">
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" required autocomplete="username" placeholder="Digite seu usuário" autofocus>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="Digite sua senha">
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Entrar no Painel</button>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <a href="{{ url_for('index') }}" class="card-link" style="font-size: 0.85rem;">&larr; Voltar para o site público</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

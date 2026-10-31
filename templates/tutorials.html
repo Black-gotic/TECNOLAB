@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Conteúdos & Tutoriais — TECNOLAB{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top: 8rem;">
+    <h2 class="section-title">Conteúdos & Tutoriais</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">
+        Artigos e dicas práticas sobre tecnologia, desenvolvimento web e programação.
+    </p>
+
+    <div class="cards-grid">
+        {% if tutorials %}
+            {% for item in tutorials %}
+            <div class="card">
+                {% if item.image_path %}
+                    <img src="{{ url_for('static', filename=item.image_path) }}" alt="{{ item.title }}" class="card-img-top">
+                {% endif %}
+                <span class="hero-tag">{{ item.category or 'Tecnologia' }}</span>
+                <h3 class="card-title">{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
+                {% if item.content %}
+                    <div style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem; white-space: pre-line;">{{ item.content }}</div>
+                {% endif %}
+                <div class="card-actions">
+                    <span class="card-link" style="color: var(--text-muted); font-size: 0.8rem;">Publicado em {{ item.created_at[:10] }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <!-- Conteúdo demonstrativo padrão se nenhum artigo estiver cadastrado no banco -->
+            <div class="card">
+                <span class="hero-tag">Desenvolvimento Web</span>
+                <h3 class="card-title">Como estruturar uma aplicação Flask de forma modular</h3>
+                <p>Boas práticas na organização de pastas, arquivos estáticos e rotas para projetos Python simples e expansíveis.</p>
+                <div class="card-actions">
+                    <a href="#" class="card-link">Ler artigo &rarr;</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="hero-tag">CSS3</span>
+                <h3 class="card-title">Criando interfaces futuristas com CSS nativo</h3>
+                <p>Como aplicar sombras, transparências (backdrop-filter) e gradientes sem sobrecarregar o desempenho da página.</p>
+                <div class="card-actions">
+                    <a href="#" class="card-link">Ler artigo &rarr;</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

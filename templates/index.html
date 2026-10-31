@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-grid">
+        <div class="hero-content">
+            <span class="hero-tag">Desenvolvimento Web & Soluções Digitais</span>
+            <h1 class="hero-title">TECNOLAB<br><span>Conectando você à tecnologia</span>[cite: 2]</h1>
+            <p class="hero-description">
+                Desenvolvimento de sites modernos, responsivos e personalizados para impulsionar a sua presença digital com alto desempenho e qualidade visual.
+            </p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('projects') }}" class="btn btn-primary">Ver Projetos</a>
+                <a href="{{ url_for('contact') }}" class="btn btn-secondary">Entrar em Contato</a>
+            </div>
+        </div>
+
+        <div class="tech-illustration">
+            <div class="chip-box">
+                <div class="chip-text">TECNO<span style="color:var(--accent-orange);">LAB</span></div>
+                <div class="chip-subtext">SYSTEMS & WEB</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">O que oferecemos</h2>
+    <div class="cards-grid">
+        <div class="card">
+            <h3 class="card-title">Sites Institucionais</h3>
+            <p>Páginas profissionais para apresentar sua marca ou empresa de forma elegante e funcional.</p>
+        </div>
+        <div class="card">
+            <h3 class="card-title">Landing Pages</h3>
+            <p>Páginas de alta conversão focadas em apresentar produtos ou campanhas específicas.</p>
+        </div>
+        <div class="card">
+            <h3 class="card-title">Sistemas Customizados</h3>
+            <p>Aplicações web completas integradas com banco de dados e autenticação segura.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

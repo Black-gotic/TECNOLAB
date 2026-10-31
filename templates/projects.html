@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Projetos — TECNOLAB{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top: 8rem;">
+    <h2 class="section-title">Portfólio de Projetos</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">
+        Confira alguns exemplos demonstrativos das aplicações e sites desenvolvidos pelo TECNOLAB.
+    </p>
+
+    <div class="cards-grid">
+        {% if projects %}
+            {% for item in projects %}
+            <div class="card">
+                {% if item.image_path %}
+                    <img src="{{ url_for('static', filename=item.image_path) }}" alt="{{ item.title }}" class="card-img-top">
+                {% endif %}
+                <h3 class="card-title">{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
+                {% if item.technologies %}
+                <div class="tech-tags">
+                    {% for tech in item.technologies.split(',') %}
+                        <span class="tech-badge">{{ tech.strip() }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% if item.features %}
+                <p><strong>Funcionalidades:</strong> {{ item.features }}</p>
+                {% endif %}
+                <div class="card-actions">
+                    {% if item.demo_url %}
+                        <a href="{{ item.demo_url }}" target="_blank" rel="noopener noreferrer" class="card-link">Ver Projeto Demo &rarr;</a>
+                    {% endif %}
+                    {% if item.repo_url %}
+                        <a href="{{ item.repo_url }}" target="_blank" rel="noopener noreferrer" class="card-link">Repositório &rarr;</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <!-- Card 1 (Demonstração Padrão) -->
+            <div class="card">
+                <h3 class="card-title">Portal Tecnológico (Demonstração)</h3>
+                <p>Sistema web dinâmico para publicação de artigos e gerenciamento de notícias sobre informática e programação.</p>
+                <div class="tech-tags">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Flask</span>
+                    <span class="tech-badge">SQLite</span>
+                    <span class="tech-badge">CSS3</span>
+                </div>
+                <p><strong>Funcionalidades:</strong> CRUD de postagens, busca por categoria, layout responsivo.</p>
+                <div class="card-actions">
+                    <a href="#" class="card-link">Ver Projeto Demo &rarr;</a>
+                    <a href="#" class="card-link">Repositório &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Card 2 (Demonstração Padrão) -->
+            <div class="card">
+                <h3 class="card-title">Landing Page para Serviços</h3>
+                <p>Página de conversão otimizada para prestadores de serviços, com foco em velocidade de carregamento e design limpo.</p>
+                <div class="tech-tags">
+                    <span class="tech-badge">HTML5</span>
+                    <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">JavaScript</span>
+                </div>
+                <p><strong>Funcionalidades:</strong> Formulário responsivo, animações sutis, SEO otimizado.</p>
+                <div class="card-actions">
+                    <a href="#" class="card-link">Ver Demo &rarr;</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

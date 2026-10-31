@@ -1,0 +1,69 @@
+{% extends 'admin/layout.html' %}
+
+{% block admin_content %}
+<div class="admin-panel-header">
+    <div>
+        <h2 style="color: var(--accent-cyan); font-size: 1.5rem; margin-bottom: 0.3rem;">Gerenciar Conteúdos & Tutoriais</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Adicione artigos, tutoriais ou salve ideias como rascunho.</p>
+    </div>
+    <div>
+        <a href="{{ url_for('admin_tutorial_new') }}" class="btn btn-primary btn-sm">+ Novo Conteúdo</a>
+    </div>
+</div>
+
+<div class="admin-table-container">
+    {% if tutorials %}
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th style="width: 50px;">ID</th>
+                <th>Título</th>
+                <th style="width: 140px;">Categoria</th>
+                <th style="width: 110px;">Status</th>
+                <th style="width: 150px;">Data</th>
+                <th style="width: 160px; text-align: right;">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in tutorials %}
+            <tr>
+                <td style="color: var(--text-muted); font-size: 0.85rem;">#{{ item.id }}</td>
+                <td>
+                    <div style="font-weight: 600; color: var(--text-main);">{{ item.title }}</div>
+                    {% if item.image_path %}
+                        <div style="font-size: 0.75rem; color: var(--accent-cyan); margin-top: 0.2rem;">🖼️ Imagem anexada</div>
+                    {% endif %}
+                </td>
+                <td>
+                    <span class="tech-badge">{{ item.category or 'Geral' }}</span>
+                </td>
+                <td>
+                    {% if item.is_published %}
+                        <span class="status-badge status-published">Publicado</span>
+                    {% else %}
+                        <span class="status-badge status-draft">Rascunho</span>
+                    {% endif %}
+                </td>
+                <td style="color: var(--text-muted); font-size: 0.85rem;">
+                    {{ item.created_at[:10] if item.created_at else '-' }}
+                </td>
+                <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 0.5rem;">
+                        <a href="{{ url_for('admin_tutorial_edit', id=item.id) }}" class="btn btn-secondary btn-xs">Editar</a>
+                        <form method="POST" action="{{ url_for('admin_tutorial_delete', id=item.id) }}" style="display: inline;" onsubmit="return confirm('Deseja realmente excluir este tutorial? Esta ação não pode ser desfeita.');">
+                            <button type="submit" class="btn btn-danger btn-xs">Excluir</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+        <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem;">Nenhum tutorial ou conteúdo cadastrado até o momento.</p>
+        <a href="{{ url_for('admin_tutorial_new') }}" class="btn btn-primary">+ Cadastrar Primeiro Tutorial</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

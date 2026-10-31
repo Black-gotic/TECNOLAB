@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Tecnologias — TECNOLAB{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top: 8rem;">
+    <h2 class="section-title">Stack de Tecnologias</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">
+        Ferramentas e linguagens utilizadas no desenvolvimento das aplicações web do TECNOLAB.
+    </p>
+
+    <div class="tech-grid">
+        <div class="tech-card">
+            <h3>Python</h3>
+            <p>Linguagem principal utilizada no desenvolvimento do backend e regras de negócio.</p>
+        </div>
+        <div class="tech-card">
+            <h3>Flask</h3>
+            <p>Microframework versátil e leve para construção das rotas e servidor web.</p>
+        </div>
+        <div class="tech-card">
+            <h3>HTML5</h3>
+            <p>Estruturação semântica e acessível de páginas web.</p>
+        </div>
+        <div class="tech-card">
+            <h3>CSS3</h3>
+            <p>Estilização nativa, layouts responsivos (Flexbox/Grid) e animações leves.</p>
+        </div>
+        <div class="tech-card">
+            <h3>JavaScript</h3>
+            <p>Interatividade no cliente e manipulação dinâmica de elementos no navegador.</p>
+        </div>
+        <div class="tech-card">
+            <h3>SQLite</h3>
+            <p>Banco de dados leve e eficiente para persistência de dados das aplicações.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
