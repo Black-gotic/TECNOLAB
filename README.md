@@ -1,38 +1,161 @@
-# TECNOLAB — Site & Portfólio Profissional
+# TECNOLAB — Site Institucional
 
-Site institucional e portfólio profissional desenvolvido para a marca **TECNOLAB**[cite: 1], com a proposta de apresentar projetos de desenvolvimento web, divulgação de serviços e canal de contato com potenciais clientes.
+Site institucional e portfólio da **TECNOLAB**, desenvolvido para apresentar serviços de desenvolvimento web, projetos, conteúdos tecnológicos e canais de contato.
 
-## 🚀 Tecnologias Utilizadas
-- **Backend:** Python 3 + Flask[cite: 1]
-- **Frontend:** HTML5, CSS3 Nativo (Variáveis CSS, Flexbox/Grid) e JavaScript Nativo[cite: 1]
-- **Template Engine:** Jinja2[cite: 1]
-- **Banco de Dados:** SQLite 3[cite: 1]
+O projeto busca oferecer uma experiência moderna, responsiva e acessível, com uma área administrativa para gerenciar os conteúdos publicados.
 
-## 🛠️ Como Executar o Projeto
+## ✨ Funcionalidades
 
-1. Clone ou extraia a pasta do projeto `TECNOLAB`.
-2. Crie e ative um ambiente virtual (opcional, porém recomendado):
-   ```bash
-   python -m venv venv
-   # No Windows:
-   venv\Scripts\activate
-   # No Linux/Mac:
-   source venv/bin/activate
+- Página inicial com apresentação da marca.
+- Página institucional sobre a TECNOLAB.
+- Portfólio de projetos.
+- Apresentação dos serviços oferecidos.
+- Página de tecnologias e conteúdos.
+- Formulário de contato.
+- Painel administrativo com autenticação.
+- Cadastro, edição e exclusão de tutoriais.
+- Cadastro, edição e exclusão de projetos.
+- Controle de publicação e rascunhos.
+- Envio de imagens para os conteúdos.
 
+## 🧰 Tecnologias
 
-## 🔐 Painel Administrativo
+| Tecnologia | Aplicação |
+|---|---|
+| Python 3 | Backend |
+| Flask | Aplicação web e rotas |
+| HTML5 | Estrutura das páginas |
+| CSS3 | Estilização e responsividade |
+| JavaScript | Interatividade |
+| Jinja2 | Templates dinâmicos |
+| SQLite | Banco de dados |
+| Werkzeug | Segurança de senhas e utilitários |
 
-O projeto conta com um painel administrativo protegido para gerenciamento dinâmico de conteúdos/tutoriais e projetos do portfólio.
+## 📁 Estrutura do projeto
 
-### Como Acessar
-1. Acesse no navegador: `http://localhost:5000/admin`
-2. Credenciais padrão iniciais:
-   - **Usuário:** `admin`
-   - **Senha:** `admin123`
+```text
+TECNOLAB/
+├── app.py
+├── config.py
+├── create_admin.py
+├── requirements.txt
+├── templates/
+│   ├── admin/
+│   └── ...
+├── static/
+│   ├── css/
+│   ├── js/
+│   └── uploads/
+└── ...
+```
 
-### Como Alterar ou Criar Nova Senha de Administrador
-Execute o script interativo no terminal:
+*Estrutura ilustrativa: a organização pode variar conforme a versão do projeto.*
+
+## ⚙️ Como executar localmente
+
+### 1. Clone o repositório
+
+```bash
+git clone URL_DO_REPOSITORIO
+cd TECNOLAB
+```
+
+### 2. Crie um ambiente virtual
+
+```bash
+python -m venv .venv
+```
+
+### 3. Ative o ambiente virtual
+
+**Windows PowerShell:**
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+**Linux/macOS:**
+
+```bash
+source .venv/bin/activate
+```
+
+### 4. Instale as dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Configure o administrador
+
+Se o arquivo `create_admin.py` estiver presente, execute:
+
 ```bash
 python create_admin.py
 ```
-O script solicitará o nome de usuário (padrão `admin`) e a nova senha desejada com confirmação, gravando o hash seguro com `werkzeug.security` no SQLite.
+
+Siga as instruções para criar o usuário e definir uma senha própria.
+
+### 6. Inicie a aplicação
+
+```bash
+python app.py
+```
+
+Acesse pelo navegador:
+
+```text
+http://127.0.0.1:5000
+```
+
+## 🔐 Painel administrativo
+
+O sistema possui uma área administrativa protegida por autenticação.
+
+**Endereço local:**
+
+```text
+http://127.0.0.1:5000/admin/login
+```
+
+Após entrar, é possível gerenciar os tutoriais e projetos, editar informações e controlar quais conteúdos ficam publicados.
+
+As credenciais administrativas devem ser configuradas individualmente. Não utilize senhas padrão em ambientes públicos.
+
+## 🗄️ Banco de dados
+
+O projeto utiliza SQLite para armazenar informações como:
+
+- Usuários administrativos.
+- Tutoriais.
+- Projetos.
+- Mensagens enviadas pelo formulário de contato.
+
+As imagens enviadas pelo painel administrativo são armazenadas no diretório de uploads configurado pela aplicação.
+
+Em uma hospedagem pública, o banco de dados e os arquivos enviados precisam estar em armazenamento persistente para que não sejam perdidos em reinicializações ou atualizações.
+
+## 🔒 Segurança
+
+Antes de disponibilizar o projeto publicamente:
+
+- Configure uma chave secreta própria para a aplicação.
+- Utilize senhas administrativas fortes.
+- Não publique arquivos `.env`, senhas ou dados privados.
+- Desative o modo de depuração (`debug`) em produção.
+- Utilize HTTPS.
+- Configure corretamente o armazenamento do banco de dados e dos uploads.
+
+## 🚀 Publicação
+
+O projeto pode ser hospedado em um serviço compatível com aplicações Python e Flask.
+
+A publicação deve utilizar um servidor adequado para produção e armazenamento persistente para os dados administrados pelo painel.
+
+## 👨‍💻 Sobre o projeto
+
+Desenvolvido como parte da iniciativa **TECNOLAB**, com foco em desenvolvimento web, soluções digitais, tecnologia e criação de projetos práticos.
+
+---
+
+**TECNOLAB — Conectando você à tecnologia.**
