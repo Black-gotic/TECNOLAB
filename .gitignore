@@ -1,0 +1,77 @@
+
+# ==============================
+# Python
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ==============================
+# Ambientes virtuais
+# ==============================
+venv/
+.venv/
+env/
+ENV/
+.tecnolab-env/
+
+# ==============================
+# Banco de dados
+# ==============================
+*.db
+*.sqlite
+*.sqlite3
+
+# ==============================
+# Uploads dos usuários
+# ==============================
+static/uploads/*
+!static/uploads/.gitkeep
+
+# ==============================
+# Variáveis de ambiente e segredos
+# ==============================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ==============================
+# Editores e IDEs
+# ==============================
+.vscode/
+.idea/
+*.code-workspace
+
+# ==============================
+# Sistema operacional
+# ==============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==============================
+# Logs e arquivos temporários
+# ==============================
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# ==============================
+# Testes e cobertura
+# ==============================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ==============================
+# Builds e distribuições
+# ==============================
+build/
+dist/
+*.egg-info/

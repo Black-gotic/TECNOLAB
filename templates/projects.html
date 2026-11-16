@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Projetos — TECNOLAB{% endblock %}
+
+{% block content %}
+<section class="section page-section">
+    <span class="eyebrow">Portfólio TECNOLAB</span>
+    <h2 class="section-title">Portfólio de Projetos</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">
+        Uma seleção de projetos, experimentos e soluções desenvolvidos pelo TECNOLAB.
+    </p>
+
+    <div class="cards-grid">
+        {% if projects %}
+            {% for item in projects %}
+            <div class="card">
+                {% if item.image_path %}
+                    <img src="{{ url_for('static', filename=item.image_path) }}" alt="{{ item.title }}" class="card-img-top">
+                {% endif %}
+                <h3 class="card-title">{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
+                {% if item.technologies %}
+                <div class="tech-tags">
+                    {% for tech in item.technologies.split(',') %}
+                        <span class="tech-badge">{{ tech.strip() }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% if item.features %}
+                <p><strong>Funcionalidades:</strong> {{ item.features }}</p>
+                {% endif %}
+                <div class="card-actions">
+                    {% if item.demo_url %}
+                        <a href="{{ item.demo_url }}" target="_blank" rel="noopener noreferrer" class="card-link">Ver Projeto Demo &rarr;</a>
+                    {% endif %}
+                    {% if item.repo_url %}
+                        <a href="{{ item.repo_url }}" target="_blank" rel="noopener noreferrer" class="card-link">Repositório &rarr;</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty-feature"><span class="eyebrow">Vitrine em construção</span><h3>Os projetos publicados vão aparecer aqui.</h3><p>Você pode adicioná-los pelo painel administrativo quando estiverem prontos para apresentar.</p></div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

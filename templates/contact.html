@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Contato — TECNOLAB{% endblock %}
+
+{% block content %}
+<section class="section page-section">
+    <span class="eyebrow">Seu próximo projeto começa com uma conversa</span>
+    <h2 class="section-title">Vamos tirar sua ideia do papel?</h2>
+    <p class="section-lead contact-lead">Conte o que você precisa: site para sua empresa, página de divulgação, sistema ou uma melhoria no seu projeto atual.</p>
+
+    <div class="contact-container">
+        <!-- Formulário Funcional com Validação Backend Flask -->
+        <form action="{{ url_for('contact') }}" method="POST" class="contact-form">
+            <div class="form-group">
+                <label for="name">Nome completo</label>
+                <input type="text" id="name" name="name" required placeholder="Seu nome">
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">O que você precisa?</label>
+                <select id="subject" name="subject" class="form-select" required>
+                    <option value="">Selecione um assunto</option>
+                    <option>Orçamento de site</option><option>Landing page</option><option>Sistema web</option><option>Manutenção ou melhoria</option><option>Parceria ou outro assunto</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Mensagem</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Descreva os detalhes do seu projeto..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar mensagem</button>
+            <p class="form-note">Ao enviar, seu aplicativo de e-mail abrirá uma mensagem pronta para você revisar e mandar.</p>
+        </form>
+
+        <!-- Informações de Contato -->
+        <div class="contact-info">
+            <span class="eyebrow">TECNOLAB</span>
+            <h3 class="contact-info-title">Tecnologia, projetos e conversa direta.</h3>
+            
+            <div class="info-item">
+                <h4>Atendimento</h4>
+                <p>Conte sua ideia e receba um retorno para entender escopo, possibilidades e próximos passos.</p>
+            </div>
+
+            <div class="info-item">
+                <h4>E-mail</h4>
+                <p><a class="contact-email" href="mailto:tecnolab.oficialbr@gmail.com">tecnolab.oficialbr@gmail.com</a></p>
+            </div>
+
+            <div class="info-item">
+                <h4>Redes Sociais</h4>
+                <div class="social-links social-links-compact">
+                    <a href="https://www.youtube.com/@TecnoLabPT" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
+                    <a href="https://www.instagram.com/tecnolab.oficialbr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+                    <a href="https://www.tiktok.com/@tecnolabpt" target="_blank" rel="noopener noreferrer">TikTok ↗</a>
+                    <a href="https://www.facebook.com/tecnolabpt" target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

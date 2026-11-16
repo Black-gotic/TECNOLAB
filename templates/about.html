@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Sobre — TECNOLAB{% endblock %}
+
+{% block content %}
+<section class="section page-section">
+    <span class="eyebrow">Sobre o TECNOLAB</span>
+    <h2 class="section-title">Tecnologia para criar, aprender e compartilhar.</h2>
+    <div style="max-width: 800px; margin: 0 auto;">
+        <div class="card" style="margin-bottom: 2rem;">
+            <h3 class="card-title">Um espaço para tirar ideias do papel</h3>
+            <p>O TECNOLAB está começando: é um projeto de tecnologia para criar sites e soluções digitais para pessoas e negócios. Este espaço também vai reunir trabalhos autorais e tutoriais à medida que os projetos ganharem forma. O canal do YouTube ainda não tem vídeos publicados; os primeiros conteúdos estão sendo planejados.</p>
+            <p class="about-cta"><a href="{{ url_for('contact') }}" class="btn btn-primary">Converse sobre seu projeto</a></p>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <h3 class="card-title">Praticidade & Funcionalidade</h3>
+                <p>Desenvolvimento focado em resolver problemas reais, priorizando a usabilidade e a eficiência técnica em cada linha de código.</p>
+            </div>
+            <div class="card">
+                <h3 class="card-title">Qualidade & Acessibilidade</h3>
+                <p>Compromisso com padrões web modernos, código limpo e layouts acessíveis em qualquer dispositivo.</p>
+            </div>
+            <div class="card">
+                <h3 class="card-title">Conteúdo e comunidade</h3>
+                <p>O canal faz parte dos planos do TECNOLAB e ainda está sendo preparado. As redes oficiais estão abertas para acompanhar as novidades durante essa construção.</p>
+            </div>
+        </div>
+        <div class="social-links" aria-label="Canais oficiais">
+            <a href="https://www.youtube.com/@TecnoLabPT" target="_blank" rel="noopener noreferrer">YouTube <span>↗</span></a>
+            <a href="https://www.instagram.com/tecnolab.oficialbr/" target="_blank" rel="noopener noreferrer">Instagram <span>↗</span></a>
+            <a href="https://www.tiktok.com/@tecnolabpt" target="_blank" rel="noopener noreferrer">TikTok <span>↗</span></a>
+            <a href="https://www.facebook.com/tecnolabpt" target="_blank" rel="noopener noreferrer">Facebook <span>↗</span></a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'admin/layout.html' %}
+
+{% block admin_content %}
+<div class="admin-panel-header">
+    <div>
+        <h2 style="color: var(--accent-cyan); font-size: 1.5rem; margin-bottom: 0.3rem;">
+            {% if action == 'edit' %}Editar Projeto do Portfólio{% else %}Novo Projeto do Portfólio{% endif %}
+        </h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Preencha as informações do projeto demonstrativo.</p>
+    </div>
+    <div>
+        <a href="{{ url_for('admin_projects') }}" class="btn btn-secondary btn-sm">&larr; Voltar para a Lista</a>
+    </div>
+</div>
+
+<form method="POST" enctype="multipart/form-data" class="contact-form" style="max-width: 800px; margin-top: 1rem;">
+    <div class="form-group">
+        <label for="title">Título do Projeto *</label>
+        <input type="text" id="title" name="title" required value="{{ project.title if project else '' }}" placeholder="Ex.: Portal Tecnológico, E-commerce Moderno">
+    </div>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+        <div class="form-group">
+            <label for="technologies">Tecnologias Utilizadas (separadas por vírgula)</label>
+            <input type="text" id="technologies" name="technologies" value="{{ project.technologies if project else '' }}" placeholder="Ex.: Python, Flask, SQLite, CSS3">
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status de Publicação *</label>
+            <select id="status" name="status" class="form-select">
+                <option value="published" {% if not project or project.is_published == 1 %}selected{% endif %}>Publicado (Visível no site)</option>
+                <option value="draft" {% if project and project.is_published == 0 %}selected{% endif %}>Rascunho (Oculto do público)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Descrição do Projeto *</label>
+        <textarea id="description" name="description" rows="3" required placeholder="Apresentação do projeto, objetivo e destaques...">{{ project.description if project else '' }}</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="features">Funcionalidades Principais (opcional)</label>
+        <input type="text" id="features" name="features" value="{{ project.features if project else '' }}" placeholder="Ex.: CRUD de postagens, busca por categoria, layout responsivo">
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <div class="form-group">
+            <label for="demo_url">Link de Demonstração (URL opcional)</label>
+            <input type="text" id="demo_url" name="demo_url" value="{{ project.demo_url if project else '' }}" placeholder="https://exemplo.com ou #">
+        </div>
+
+        <div class="form-group">
+            <label for="repo_url">Link do Repositório (GitHub/Git opcional)</label>
+            <input type="text" id="repo_url" name="repo_url" value="{{ project.repo_url if project else '' }}" placeholder="https://github.com/usuario/repositorio">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="content">Conteúdo / Detalhes Adicionais (opcional)</label>
+        <textarea id="content" name="content" rows="4" placeholder="Detalhes técnicos sobre arquitetura, instalação ou resultados...">{{ project.content if project else '' }}</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="image">Imagem / Mockup do Projeto (opcional)</label>
+        <input type="file" id="image" name="image" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/svg+xml">
+        <small style="color: var(--text-muted); display: block; margin-top: 0.4rem;">Formatos aceitos: PNG, JPG, JPEG, WEBP, GIF, SVG (máx. 16MB)</small>
+        {% if project and project.image_path %}
+            <div style="margin-top: 0.8rem; display: flex; align-items: center; gap: 1rem;">
+                <img src="{{ url_for('static', filename=project.image_path) }}" alt="Preview" style="max-height: 80px; border-radius: 4px; border: 1px solid var(--border-subtle);">
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Imagem atual: {{ project.image_path }}</span>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="form-actions" style="margin-top: 2rem; display: flex; gap: 1rem;">
+        <button type="submit" class="btn btn-primary">
+            {% if action == 'edit' %}Salvar Alterações{% else %}Publicar / Salvar Projeto{% endif %}
+        </button>
+        <a href="{{ url_for('admin_projects') }}" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

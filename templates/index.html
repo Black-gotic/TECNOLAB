@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}TECNOLAB — Sites, projetos e tecnologia{% endblock %}
+{% block description %}Conheça o TECNOLAB: criação de sites e soluções digitais, projetos e tutoriais práticos de tecnologia.{% endblock %}
+
+{% block content %}
+<section class="hero home-hero">
+    <div class="hero-grid">
+        <div class="hero-content">
+            <span class="hero-tag">Tecnologia feita para sair do papel</span>
+            <h1 class="hero-title">Sua ideia merece um <span>site à altura.</span></h1>
+            <p class="hero-description">O TECNOLAB cria sites e soluções digitais para pessoas e negócios. Este espaço também vai reunir projetos e tutoriais à medida que o canal e as ideias ganharem forma.</p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('contact') }}" class="btn btn-primary">Vamos conversar sobre seu projeto</a>
+                <a href="{{ url_for('projects') }}" class="btn btn-secondary">Explorar projetos</a>
+            </div>
+            <div class="hero-proof"><span class="status-dot"></span> Desenvolvimento web · Projetos reais · Conteúdo prático</div>
+        </div>
+        <div class="hero-visual"><img src="{{ url_for('static', filename='img/tecnolab-banner.png') }}" alt="Banner TECNOLAB com circuito eletrônico e o slogan Conectando você à tecnologia"></div>
+    </div>
+</section>
+
+<section class="section home-intro">
+    <div class="section-heading"><span class="eyebrow">O que você encontra por aqui</span><h2 class="section-title">Um estúdio, um laboratório e um canal.</h2><p class="section-lead">Um espaço para transformar ideias em presença digital e compartilhar o que aprendemos construindo.</p></div>
+    <div class="cards-grid feature-grid">
+        <article class="card feature-card"><span class="feature-icon">01</span><h3 class="card-title">Sites e soluções</h3><p>Sites profissionais, páginas de divulgação e sistemas sob medida para apresentar seu trabalho e atender melhor seus clientes.</p><a href="{{ url_for('services') }}" class="card-link">Conhecer os serviços →</a></article>
+        <article class="card feature-card"><span class="feature-icon">02</span><h3 class="card-title">Projetos em construção</h3><p>Veja aplicações, experimentos e ideias que saíram do planejamento para ganhar forma na web.</p><a href="{{ url_for('projects') }}" class="card-link">Ver projetos →</a></article>
+        <article class="card feature-card"><span class="feature-icon">03</span><h3 class="card-title">Tutoriais sem enrolação</h3><p>Conteúdos curtos e práticos para aprender sobre desenvolvimento web e as ferramentas do dia a dia.</p><a href="{{ url_for('tutorials') }}" class="card-link">Explorar conteúdos →</a></article>
+    </div>
+</section>
+
+<section class="section home-projects">
+    <div class="section-heading section-heading-row"><div><span class="eyebrow">Feito no TECNOLAB</span><h2 class="section-title">Projetos em destaque</h2></div><a class="text-link" href="{{ url_for('projects') }}">Todos os projetos →</a></div>
+    <div class="cards-grid">
+        {% for item in projects %}<article class="card project-card">
+            {% if item.image_path %}<img src="{{ url_for('static', filename=item.image_path) }}" alt="{{ item.title }}" class="card-img-top">{% else %}<div class="project-art"><span>TECNOLAB <b>✳</b></span><small>PROJETO {{ '%02d'|format(loop.index) }}</small></div>{% endif %}
+            <div class="project-card-body"><span class="eyebrow">Projeto</span><h3 class="card-title">{{ item.title }}</h3><p>{{ item.description }}</p>{% if item.technologies %}<div class="tech-tags">{% for tech in item.technologies.split(',') %}<span class="tech-badge">{{ tech.strip() }}</span>{% endfor %}</div>{% endif %}</div>
+        </article>{% else %}<div class="empty-feature"><span class="eyebrow">Portfólio em construção</span><h3>Este espaço vai ganhar forma junto com os próximos projetos.</h3><p>Enquanto o TECNOLAB organiza seus primeiros trabalhos para publicar, você já pode conhecer os serviços e conversar sobre a sua ideia.</p><a class="card-link" href="{{ url_for('contact') }}">Começar uma conversa →</a></div>{% endfor %}
+    </div>
+</section>
+
+<section class="section home-tutorials">
+    <div class="section-heading section-heading-row"><div><span class="eyebrow">Aprender fazendo</span><h2 class="section-title">Tutoriais e ideias</h2></div><a class="text-link" href="{{ url_for('tutorials') }}">Todos os conteúdos →</a></div>
+    <div class="tutorial-list">
+        {% for item in tutorials %}<article class="tutorial-row"><span class="tutorial-index">{{ '%02d'|format(loop.index) }}</span><div><span class="eyebrow">{{ item.category or 'Tecnologia' }}</span><h3>{{ item.title }}</h3><p>{{ item.description }}</p></div><span class="tutorial-arrow">↗</span></article>
+        {% else %}<div class="empty-feature"><span class="eyebrow">Canal em preparação</span><h3>Estamos planejando como compartilhar os conteúdos.</h3><p>O canal ainda está começando e não tem vídeos publicados. Siga o TECNOLAB nas redes para acompanhar as novidades quando os primeiros conteúdos forem ao ar.</p><a class="card-link" href="https://www.youtube.com/@TecnoLabPT" target="_blank" rel="noopener noreferrer">Visitar o canal TECNOLAB →</a></div>{% endfor %}
+    </div>
+</section>
+
+<section class="channel-banner">
+    <div class="channel-copy"><span class="eyebrow">Um canal começando do zero</span><h2>Estamos preparando o que vem por aí.</h2><p>O canal ainda não tem publicações. Enquanto definimos os formatos e os primeiros temas, você já pode acompanhar o TECNOLAB nas redes sociais.</p></div>
+    <a href="https://www.youtube.com/@TecnoLabPT" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visitar o canal <span aria-hidden="true">↗</span></a>
+</section>
+
+<section class="section closing-cta"><span class="eyebrow">Tem uma ideia?</span><h2>Vamos construir algo bom para a sua presença digital.</h2><p>Conte o que você precisa. A gente conversa sobre o melhor caminho para transformar sua ideia em um site.</p><a class="btn btn-primary" href="{{ url_for('contact') }}">Pedir um orçamento</a></section>
+{% endblock %}
